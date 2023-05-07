@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replica-controller
+  labels:
+    type: backend
+spec:
+  template:
+# template is used to define the kind of pod that we want the replica set to replicate
+    metadata:
+      name: nginx
+      labels:
+        tier: backend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+  replicas: 3
+   
