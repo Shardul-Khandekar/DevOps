@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels:
+    type: production
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  replicas: 3
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: backend
+# The value of the label for pod should match the selector matchLabels value for the replicaSet to control pods
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
